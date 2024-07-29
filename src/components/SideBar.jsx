@@ -1,12 +1,3 @@
-import React from "react";
-import AddItemForm from "./AddItemForm";
-import ButtonGroup from "./ButtonGroup";
-
-export default function SideBar() {
-  return (
-    <div className="sidebar">
-      <AddItemForm />
-      <ButtonGroup />
-    </div>
-  );
+export default function SideBar({ children }) {
+  return <div className="sidebar">{children}</div>;
 }

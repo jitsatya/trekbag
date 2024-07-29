@@ -1,13 +1,38 @@
-import React from "react";
 import Button from "./Button";
 
-export default function ButtonGroup() {
+export default function ButtonGroup({
+  handleRemoveAllItems,
+  handleResetToInitial,
+  handleMarkAllAsComplete,
+  handleMarkAllAsIncomplete,
+}) {
+  const secondaryButtons = [
+    {
+      text: "Mark all as complete",
+      onClick: handleMarkAllAsComplete,
+    },
+    {
+      text: "Mark all as incomplete",
+      onClick: handleMarkAllAsIncomplete,
+    },
+    {
+      text: "Reset to initial",
+      onClick: handleResetToInitial,
+    },
+    {
+      text: "Remove all items",
+      onClick: handleRemoveAllItems,
+    },
+  ];
   return (
     <section className="button-group">
-      <Button> Mark all as complete </Button>
-      <Button> Mark all as incomplete </Button>
-      <Button> Reset to initial </Button>
-      <Button> Remove all items </Button>
+      {secondaryButtons.map(({ text, onClick }) => {
+        return (
+          <Button key={text + onClick.toString()} onClick={onClick}>
+            {text}
+          </Button>
+        );
+      })}
     </section>
   );
 }
