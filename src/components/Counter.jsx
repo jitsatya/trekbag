@@ -1,10 +1,11 @@
-import useItemsContext from "../lib/customHooks/useItemscontext";
+import { useItemsStore } from "../stores/itemStore";
 
 export default function Counter() {
-  const { numberOfItemsChecked, itemCount } = useItemsContext();
+  const items = useItemsStore((state) => state.items);
   return (
     <p>
-      <b>{numberOfItemsChecked}</b>/{itemCount} items packed
+      <b>{items.filter((item) => item.packed).length}</b>/{items.length} items
+      packed
     </p>
   );
 }

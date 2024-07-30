@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import Button from "./Button";
-import useItemsContext from "../lib/customHooks/useItemscontext";
+import { useItemsStore } from "../stores/itemStore";
 
 export default function AddItemForm() {
-  const { handleAddItem } = useItemsContext();
+  const addItem = useItemsStore((state) => state.addItem);
   const [itemText, setItemText] = useState("");
   const inputRef = useRef();
 
@@ -16,7 +16,7 @@ export default function AddItemForm() {
       return;
     }
 
-    handleAddItem(itemText);
+    addItem(itemText);
     setItemText("");
     inputRef.current.focus();
   };
