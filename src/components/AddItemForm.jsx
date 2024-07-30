@@ -1,9 +1,9 @@
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Button from "./Button";
-import { ItemsContext } from "../contexts/ItemsContextProvider";
+import useItemsContext from "../lib/customHooks/useItemscontext";
 
 export default function AddItemForm() {
-  const { handleAddItem } = useContext(ItemsContext);
+  const { handleAddItem } = useItemsContext();
   const [itemText, setItemText] = useState("");
   const inputRef = useRef();
 
