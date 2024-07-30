@@ -17,7 +17,7 @@ export default function useItemOperations() {
 
   const handleDeleteItem = (id) => {
     const newItems = items.filter((item) => {
-      item.id !== id;
+      return item.id !== id;
     });
 
     setItems(newItems);
@@ -55,8 +55,17 @@ export default function useItemOperations() {
     });
     setItems(newItems);
   };
+
+  const itemCount = items.length;
+
+  const numberOfItemsChecked = items.filter((item) => {
+    return item.packed === true;
+  }).length;
+
   return {
     items,
+    itemCount,
+    numberOfItemsChecked,
     handleAddItem,
     handleDeleteItem,
     handleToggleItem,

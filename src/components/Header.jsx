@@ -1,12 +1,14 @@
-import React from "react";
 import Logo from "./Logo";
 import Counter from "./Counter";
 
-export default function Header() {
+export default function Header({ itemCount, numberOfItemsChecked }) {
   return (
     <header>
       <Logo />
-      <Counter />
+      <Counter
+        itemCount={itemCount}
+        numberOfItemsChecked={numberOfItemsChecked}
+      />
     </header>
   );
 }

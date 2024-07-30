@@ -1,9 +1,7 @@
-import React from "react";
-
-export default function Counter() {
+export default function Counter({ itemCount, numberOfItemsChecked }) {
   return (
     <p>
-      <b>1</b>/3 items packed
+      <b>{numberOfItemsChecked}</b>/{itemCount} items packed
     </p>
   );
 }
