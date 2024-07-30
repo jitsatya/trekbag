@@ -22,3 +22,18 @@ export const secondaryButtons = [
   "Reset to initial",
   "Remove all items",
 ];
+
+export const sortingOptions = [
+  {
+    label: "Sort By Default",
+    value: "default",
+  },
+  {
+    label: "Sort By Packed",
+    value: "packed",
+  },
+  {
+    label: "Sort By Unpacked",
+    value: "unpacked",
+  },
+];

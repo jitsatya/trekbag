@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
-import { initialItems } from "../constants";
+import { createContext, useEffect, useState } from "react";
+import { initialItems } from "../lib/constants";
 
-export default function useItemOperations() {
+export const ItemsContext = createContext();
+
+export default function ItemsContextProvider({ children }) {
   const [items, setItems] = useState(
     () => JSON.parse(localStorage.getItem("items")) || initialItems
   );
@@ -67,17 +69,22 @@ export default function useItemOperations() {
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
-
-  return {
-    items,
-    itemCount,
-    numberOfItemsChecked,
-    handleAddItem,
-    handleDeleteItem,
-    handleToggleItem,
-    handleRemoveAllItems,
-    handleResetToInitial,
-    handleMarkAllAsComplete,
-    handleMarkAllAsIncomplete,
-  };
+  return (
+    <ItemsContext.Provider
+      value={{
+        items,
+        itemCount,
+        numberOfItemsChecked,
+        handleAddItem,
+        handleDeleteItem,
+        handleToggleItem,
+        handleRemoveAllItems,
+        handleResetToInitial,
+        handleMarkAllAsComplete,
+        handleMarkAllAsIncomplete,
+      }}
+    >
+      {children}
+    </ItemsContext.Provider>
+  );
 }
